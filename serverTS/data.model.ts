@@ -1,10 +1,10 @@
-import * as fs from "fs/promises";
+import * as fs from "fs";
 import * as DATA_FILE from '../data.json';
 
 // return all data from file
 export async function getAll() {
   try {
-    let dataTxt = await fs.readFile(DATA_FILE);
+    let dataTxt = fs.readFileSync("../data.json", "utf8");
     console.log(dataTxt);
     let data = JSON.parse(dataTxt);
     return data;
@@ -27,8 +27,10 @@ export async function getAllProducts() {
 // save array of customers to file
 async function save(products = []) {
   let productsTxt = JSON.stringify(products);
-  await fs.writeFile(DATA_FILE, productsTxt);
+  fs.writeFileSync("../data.json", productsTxt)
+  // fs.writeFile(DATA_FILE, productsTxt);
 }
+
 
 // // // test function for productId
 // function findProduct(productArray, Id) {
