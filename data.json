@@ -1,0 +1,33 @@
+{
+    "products": [
+      {
+        "productId": 1,
+        "productName": "Duck 1",
+        "productDescription": "this is the description of duck 1",
+        "productPrice": 12,
+        "imgSrc": "/images/duckPicture.png"
+      }
+    ],
+    "customers": [
+      {
+        "customerId": 1,
+        "customerName": "Mack",
+        "basketId" : 1,
+        "password": "1234"
+      }
+    ],
+    "basket": [
+      {
+      "basketId": 1,
+      "totalPrice": 12,
+      "productsIds":[1]
+    }
+    ],
+    "categories": [
+      {
+        "categoryId": 1,
+        "categoryName": "Carnival",
+        "productsIds": [1]
+      }
+    ]
+  }
