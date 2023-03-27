@@ -1,0 +1,17 @@
+
+//get products
+GET http://localhost:3000/products HTTP/1.1
+
+###
+
+//get specific produxt
+GET http://localhost:3000/products/2 HTTP/1.1
+
+###
+
+//add product to basket
+POST http://localhost:3000/basket/ HTTP/1.1
+
+###
+
+//get basket
