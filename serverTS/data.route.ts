@@ -1,6 +1,6 @@
 // index.js
 import express from "express";
-import { getAllProducts } from "./data.controller.js";
+import { getAllProducts, getProduct } from "./data.controller.js";
 
 export const dataRouter = express.Router();
 
@@ -9,4 +9,4 @@ dataRouter.use(express.json());
 
 // route handlers
 dataRouter.get("/products", getAllProducts);
-// dataRouter.get("/products/:id", getProduct);
+dataRouter.get("/products/:id", getProduct);

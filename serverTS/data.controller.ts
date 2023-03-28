@@ -11,13 +11,14 @@ export async function getAllProducts(req:Request, res:Response) {
   }
 }
 
-// export async function getProduct(req:Request, res:Response) {
-//   try {
-//     let id = parseInt(req.params.id);
-//     let customer = await productModel.getProductByID(id);
-//     res.json(customer);
-//   } catch (error) {
-//     // res.statusMessage=
-//     res.status(400).send(error.message);
-//   }
-// }
+export async function getProduct(req:Request, res:Response) {
+  try {
+    let id = parseInt(req.params.id);
+    console.log(id)
+    let customer = await productModel.getProductByID(id);
+    res.json(customer);
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send(error as Error);
+  }
+}

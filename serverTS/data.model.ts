@@ -11,7 +11,6 @@ export async function getAll() {
     if (err.code === "ENOENT") {
       // file does not exits
       await save([]); // create a new file with ampty array
-      console.log("catch statement run")
       return []; // return empty array
     } // // cannot handle this exception, so rethrow
     else throw err;
@@ -27,24 +26,25 @@ export async function getAllProducts() {
 // save array of customers to file
 async function save(products = []) {
   let productsTxt = JSON.stringify(products);
-  fs.writeFileSync("../data.json", productsTxt)
+  fs.writeFileSync("./data.json", productsTxt)
   // fs.writeFile(DATA_FILE, productsTxt);
 }
 
 
 // // // test function for productId
-// function findProduct(productArray, Id) {
-//   return productArray.findIndex((currProduct) => currProduct.productId === Id);
-// }
+function findProduct(productArray:any, Id:any) {
+  return productArray.some((currProduct:any) => currProduct.productId === Id);
+}
 
 // // get product by ID
-// export async function getProductByID(productId) {
-//   let productArray = await getAllProducts();
-//   let index = findProduct(productArray, productId);
-//   if (index === -1)
-//     throw new Error(`Customer with ID:${productId} doesn't exist`);
-//   else return productArray[index];
-// }
+export async function getProductByID(productId:number) {
+  let productArray = await getAllProducts();
+  console.log(productArray)
+  let index = findProduct(productArray, productId);
+  if (!index)
+    throw new Error(`Customer with ID:${productId} doesn't exist`);
+  else return productArray[index];
+}
 
 // create a new customer
 // export async function add(newCustomer) {
