@@ -1,9 +1,9 @@
-import * as productModel from "./data.model.js";
+import * as dataModel from "./data.model.js";
 import express, { Request, Response } from "express";
 
 export async function getAllProducts(req:Request, res:Response) {
   try {
-    let allProducts = await productModel.getAllProducts();
+    let allProducts = await dataModel.getAllProducts();
     res.json(allProducts);
   } catch (error: unknown){
     // res.statusMessage=
@@ -14,12 +14,24 @@ export async function getAllProducts(req:Request, res:Response) {
 export async function getProduct(req:Request, res:Response) {
   try {
     let id = parseInt(req.params.id);
-    console.log(id)
-    let customer = await productModel.getProductByID(id);
+    let customer = await dataModel.getProductByID(id);
     res.json(customer);
   } catch (error) {
     // res.statusMessage=
     res.status(400).send((error as Error).message);
-    console.log("400");
   }
 }
+
+
+export async function postCustomer(req:Request, res:Response) {
+  try {
+    let newCustomer = req.body;
+    await dataModel.addCustomer(newCustomer);
+    res.end()
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send((error as Error).message);
+  }
+}
+
+

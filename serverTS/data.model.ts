@@ -46,16 +46,44 @@ export async function getProductByID(productId:number) {
   else return productArray[index];
 }
 
-// create a new customer
-// export async function add(newCustomer) {
-//   let productArray = await getAll();
-//   if  (findProduct(productArray, newCustomer.productId) !== -1)
-//     throw new Error(
-//       `Customer with Id:${newCustomer.productId} already exists`
-//     );
-//   productArray.push(newCustomer);
-//   await save(productArray);
+interface Customer{
+  
+    customerId: number;
+    customerName: String;
+    basketId : number;
+    password: String;
+}
+
+// test function for customer ID
+function findCustomer(customerArray:Array<Customer>, Id:number) {
+  return customerArray.findIndex(
+    (currCustomer) => currCustomer.customerId === Id
+  );
+}
+
+
+// async function getCustomers(): Promise<Array<Customer>> {
+//   let existingData = fs.readFileSync(DATA_FILE, "utf-8");
+//   let existingCustomers = JSON.parse(existingData);
+//   return existingCustomers.customers;
 // }
+async function saveCustomer(customer:Customer) {
+  let existingData = fs.readFileSync(DATA_FILE, "utf-8");
+  let existingCustomers = JSON.parse(existingData);
+  existingCustomers.customers.push(customer);
+  let updatedData = JSON.stringify(existingCustomers);
+  fs.writeFileSync(DATA_FILE, updatedData);
+}
+// create a new customer
+export async function addCustomer(newCustomer:Customer) {
+  let dataArray = await getAll();
+  let customerArray: Array<Customer> = dataArray.customers;
+  if (findCustomer(customerArray, newCustomer.customerId) !== -1 )
+    throw new Error(
+      `Customer with Id:${newCustomer.customerId} already exists`
+    );
+  await saveCustomer(newCustomer);
+}
 
 // update existing customer
 // export async function update(productId, customer) {
