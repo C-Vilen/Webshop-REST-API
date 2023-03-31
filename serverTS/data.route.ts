@@ -11,5 +11,4 @@ dataRouter.use(express.json());
 dataRouter.get("/products", getAllProducts);
 dataRouter.get("/products/:id", getProduct);
 dataRouter.get("/categories", getCategories)
-
 dataRouter.post("/customers", postCustomer);

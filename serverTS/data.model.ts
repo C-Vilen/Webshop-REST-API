@@ -1,6 +1,7 @@
 import * as fs from "fs";
 const DATA_FILE = "./data.json";
 
+//Types for JSON objects
 interface Customer{
   customerId: number;
   customerName: String;
@@ -34,14 +35,19 @@ export async function getAll() {
   } catch (err:any) {
     if (err.code === "ENOENT") {
       // file does not exits
-      await save([]); // create a new file with ampty array
+      await saveDefaultArray([]); // create a new file with ampty array
       return []; // return empty array
     } // // cannot handle this exception, so rethrow
     else throw err;
   }
 }
+// saves an empty array to data.JSON if array does not exist
+async function saveDefaultArray(data = []) {
+  let dataTxt = JSON.stringify(data);
+  fs.writeFileSync(DATA_FILE, dataTxt)
+}
 
-// return all products from file
+// return all products without productDescription from file
 export async function getAllProducts() {
   let dataArray = await getAll();
   let productArray = dataArray.products;
@@ -52,26 +58,18 @@ export async function getAllProducts() {
   return outputDataArray;
 }
 
+//return all products
 async function getAllProductsWithDetails() {
   let dataArray = await getAll();
   return dataArray.products;
 }
 
-// save array of customers to file
-async function save(products = []) {
-  let productsTxt = JSON.stringify(products);
-  fs.writeFileSync("./data.json", productsTxt)
-  // fs.writeFile(DATA_FILE, productsTxt);
-}
-
-
-// // // test function for productId
+// checks if product ID already exist
 function findProduct(productArray:any, Id:any) {
   return productArray.findIndex((currProduct:any) => currProduct.productId === Id);
 }
 
-
-// // get product by ID
+//return product with specific ID
 export async function getProductByID(productId:number) {
   let productArray = await getAllProductsWithDetails();
   let index = findProduct(productArray, productId);
@@ -80,13 +78,14 @@ export async function getProductByID(productId:number) {
   else return productArray[index];
 }
 
-// test function for customer ID
+// Checks if customer with specific ID exists
 function findCustomer(customerArray:Array<Customer>, Id:number) {
   return customerArray.findIndex(
     (currCustomer) => currCustomer.customerId === Id
   );
 }
 
+//generate a new ID for customer
 function getCustomerID(customerArray: Array<Customer>) {
   let newId:number = 1;
   customerArray.forEach(element => { 
@@ -97,6 +96,7 @@ function getCustomerID(customerArray: Array<Customer>) {
   return newId;
 }
 
+//generate a new ID for basket
 function getBasketID(basketArray: Array<Basket>) {
   let newId:number = 1;
   basketArray.forEach(element => { 
@@ -107,6 +107,7 @@ function getBasketID(basketArray: Array<Basket>) {
   return newId;
 }
 
+//Saves a customer to data.JSON
 async function saveCustomer(customer:Customer) {
   let existingData = fs.readFileSync(DATA_FILE, "utf-8");
   let existingCustomers = JSON.parse(existingData);
@@ -115,16 +116,19 @@ async function saveCustomer(customer:Customer) {
   let updatedData = JSON.stringify(existingCustomers);
   fs.writeFileSync(DATA_FILE, updatedData);
 }
-// create a new customer
-export async function addCustomer(newCustomer:Customer) {
-  let dataArray = await getAll();
-  let customerArray: Array<Customer> = dataArray.customers;
-  let basketArray: Array<Basket> = dataArray.basket;
 
+// create a new customer with unique customerID and basketID
+export async function createCustomer(newCustomer:Customer) {
+  let dataArray = await getAll();
+  //generates new customerID
+  let customerArray: Array<Customer> = dataArray.customers;
   let newCustomerId: number = getCustomerID(customerArray);
   newCustomer.customerId = newCustomerId;
+  //generates new basketID
+  let basketArray: Array<Basket> = dataArray.baskets;
   let newBasketId: number = createBasket(basketArray);
   newCustomer.basketId = newBasketId;
+  //check if customer already exists
   if (findCustomer(customerArray, newCustomer.customerId) !== -1 )
     throw new Error(
       `Customer with Id:${newCustomer.customerId} already exists`
@@ -132,47 +136,26 @@ export async function addCustomer(newCustomer:Customer) {
   await saveCustomer(newCustomer);
 }
 
+//Saves a basket to data.JSON
 async function saveBasket(newBasketId:number) {
   let existingData = fs.readFileSync(DATA_FILE, "utf-8");
   let existingBaskets = JSON.parse(existingData);
   let newBasket: Basket = { basketId: newBasketId, totalPrice: 0, productIds:[]}
   console.log(newBasket)
-  existingBaskets.basket.push(newBasket);
+  existingBaskets.baskets.push(newBasket);
   let updatedData = JSON.stringify(existingBaskets);
   fs.writeFileSync(DATA_FILE, updatedData);
 }
 
+//creates a new basket with unique ID
 function createBasket(basketArray: Array<Basket>) {
   let newBasketId = getBasketID(basketArray);
   saveBasket(newBasketId);
   return newBasketId;
 }
 
+//return all categories
 export async function getAllCategories() {
   let dataArray = await getAll();
   return dataArray.categories;
 }
-
-// update existing customer
-// export async function update(productId, customer) {
-//   let productArray = await getAll();
-//   let index = findProduct(productArray, productId); // findIndex
-//   if (index === -1)
-//     throw new Error(`Customer with ID:${productId} doesn't exist`);
-//   else {
-//     productArray[index] = customer;
-//     await save(productArray);
-//   }
-// }
-
-// delete existing customer
-// export async function remove(productId) {
-//   let productArray = await getAll();
-//   let index = findProduct(productArray, productId); // findIndex
-//   if (index === -1)
-//     throw new Error(`Customer with ID:${productId} doesn't exist`);
-//   else {
-//     productArray.splice(index, 1); // remove customer from array
-//     await save(productArray);
-//   }
-// }

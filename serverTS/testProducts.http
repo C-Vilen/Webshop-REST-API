@@ -1,5 +1,5 @@
 
-//get products
+//get products without productDescription
 GET http://localhost:3000/products HTTP/1.1
 
 ###
@@ -14,13 +14,13 @@ GET http://localhost:3000/categories HTTP/1.1
 
 ###
 
-//add product to basket
-POST http://localhost:3000/basket/ HTTP/1.1
-
-###
-
 //create new customer
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
 {"customerId":2, "customerName": "Christian", "basketId": 2, "password": "12345" }
+
+###
+
+//add product to basket - yet to be implemented
+# POST http://localhost:3000/baskets/ HTTP/1.1

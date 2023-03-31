@@ -20,9 +20,15 @@
       "customerName": "Christian",
       "basketId": 2,
       "password": "12345"
+    },
+    {
+      "customerId": 3,
+      "customerName": "Christian",
+      "basketId": 3,
+      "password": "12345"
     }
   ],
-  "basket": [
+  "baskets": [
     {
       "basketId": 1,
       "totalPrice": 0,
@@ -30,6 +36,11 @@
     },
     {
       "basketId": 2,
+      "totalPrice": 0,
+      "productIds": []
+    },
+    {
+      "basketId": 3,
       "totalPrice": 0,
       "productIds": []
     }
