@@ -14,15 +14,24 @@
       "customerName": "Mack",
       "basketId": 1,
       "password": "1234"
+    },
+    {
+      "customerId": 2,
+      "customerName": "Christian",
+      "basketId": 2,
+      "password": "12345"
     }
   ],
   "basket": [
     {
       "basketId": 1,
-      "totalPrice": 12,
-      "productsIds": [
-        1
-      ]
+      "totalPrice": 0,
+      "productIds": []
+    },
+    {
+      "basketId": 2,
+      "totalPrice": 0,
+      "productIds": []
     }
   ],
   "categories": [

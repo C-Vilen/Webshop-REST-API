@@ -47,11 +47,15 @@ export async function getProductByID(productId:number) {
 }
 
 interface Customer{
-  
     customerId: number;
     customerName: String;
     basketId : number;
     password: String;
+}
+interface Basket{
+  basketId: number;
+  totalPrice: number;
+  productIds: Array<number>;
 }
 
 // test function for customer ID
@@ -61,16 +65,31 @@ function findCustomer(customerArray:Array<Customer>, Id:number) {
   );
 }
 
+function getCustomerID(customerArray: Array<Customer>) {
+  let newId:number = 1;
+  customerArray.forEach(element => { 
+    if (element.customerId >= newId) {
+      newId = element.customerId + 1;
+    }
+  });
+  return newId;
+}
 
-// async function getCustomers(): Promise<Array<Customer>> {
-//   let existingData = fs.readFileSync(DATA_FILE, "utf-8");
-//   let existingCustomers = JSON.parse(existingData);
-//   return existingCustomers.customers;
-// }
+function getBasketID(basketArray: Array<Basket>) {
+  let newId:number = 1;
+  basketArray.forEach(element => { 
+    if (element.basketId >= newId) {
+      newId = element.basketId + 1;
+    }
+  });
+  return newId;
+}
+
 async function saveCustomer(customer:Customer) {
   let existingData = fs.readFileSync(DATA_FILE, "utf-8");
   let existingCustomers = JSON.parse(existingData);
   existingCustomers.customers.push(customer);
+  console.log(customer);
   let updatedData = JSON.stringify(existingCustomers);
   fs.writeFileSync(DATA_FILE, updatedData);
 }
@@ -78,11 +97,33 @@ async function saveCustomer(customer:Customer) {
 export async function addCustomer(newCustomer:Customer) {
   let dataArray = await getAll();
   let customerArray: Array<Customer> = dataArray.customers;
+  let basketArray: Array<Basket> = dataArray.basket;
+
+  let newCustomerId: number = getCustomerID(customerArray);
+  newCustomer.customerId = newCustomerId;
+  let newBasketId: number = createBasket(basketArray);
+  newCustomer.basketId = newBasketId;
   if (findCustomer(customerArray, newCustomer.customerId) !== -1 )
     throw new Error(
       `Customer with Id:${newCustomer.customerId} already exists`
     );
   await saveCustomer(newCustomer);
+}
+
+async function saveBasket(newBasketId:number) {
+  let existingData = fs.readFileSync(DATA_FILE, "utf-8");
+  let existingBaskets = JSON.parse(existingData);
+  let newBasket: Basket = { basketId: newBasketId, totalPrice: 0, productIds:[]}
+  console.log(newBasket)
+  existingBaskets.basket.push(newBasket);
+  let updatedData = JSON.stringify(existingBaskets);
+  fs.writeFileSync(DATA_FILE, updatedData);
+}
+
+function createBasket(basketArray: Array<Basket>) {
+  let newBasketId = getBasketID(basketArray);
+  saveBasket(newBasketId);
+  return newBasketId;
 }
 
 // update existing customer
