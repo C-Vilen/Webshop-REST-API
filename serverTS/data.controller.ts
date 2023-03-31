@@ -23,6 +23,17 @@ export async function getProduct(req:Request, res:Response) {
 }
 
 
+export async function getCategories(req:Request, res:Response) {
+  try {
+    let allCategories = await dataModel.getAllCategories();
+    res.json(allCategories);
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send((error as Error).message);
+  }
+}
+
+
 export async function postCustomer(req:Request, res:Response) {
   try {
     let newCustomer = req.body;

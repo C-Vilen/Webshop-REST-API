@@ -1,6 +1,30 @@
 import * as fs from "fs";
 const DATA_FILE = "./data.json";
 
+interface Customer{
+  customerId: number;
+  customerName: String;
+  basketId : number;
+  password: String;
+}
+interface Basket{
+basketId: number;
+totalPrice: number;
+productIds: Array<number>;
+}
+interface Product{
+  productId: number;
+  productName: String;
+  productDescription: String;
+  productPrice: number;
+  imgSrc: String;
+}
+interface Category{
+  categoryId: number;
+  categoryName: String;
+  productIds: Array<Product>;
+}
+
 // return all data from file
 export async function getAll() {
   try {
@@ -19,6 +43,16 @@ export async function getAll() {
 
 // return all products from file
 export async function getAllProducts() {
+  let dataArray = await getAll();
+  let productArray = dataArray.products;
+  let outputDataArray: Array<Product> = productArray.map((element:Product) => {
+    const { productDescription, ...rest } = element; // using object destructuring to remove `productDescription`
+    return rest;
+  });
+  return outputDataArray;
+}
+
+async function getAllProductsWithDetails() {
   let dataArray = await getAll();
   return dataArray.products;
 }
@@ -39,23 +73,11 @@ function findProduct(productArray:any, Id:any) {
 
 // // get product by ID
 export async function getProductByID(productId:number) {
-  let productArray = await getAllProducts();
+  let productArray = await getAllProductsWithDetails();
   let index = findProduct(productArray, productId);
   if (index===-1)
     throw new Error(`Customer with ID:${productId} doesn't exist`);
   else return productArray[index];
-}
-
-interface Customer{
-    customerId: number;
-    customerName: String;
-    basketId : number;
-    password: String;
-}
-interface Basket{
-  basketId: number;
-  totalPrice: number;
-  productIds: Array<number>;
 }
 
 // test function for customer ID
@@ -124,6 +146,11 @@ function createBasket(basketArray: Array<Basket>) {
   let newBasketId = getBasketID(basketArray);
   saveBasket(newBasketId);
   return newBasketId;
+}
+
+export async function getAllCategories() {
+  let dataArray = await getAll();
+  return dataArray.categories;
 }
 
 // update existing customer
