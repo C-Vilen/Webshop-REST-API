@@ -33,15 +33,15 @@ async function save(products = []) {
 
 // // // test function for productId
 function findProduct(productArray:any, Id:any) {
-  return productArray.some((currProduct:any) => currProduct.productId === Id);
+  return productArray.findIndex((currProduct:any) => currProduct.productId === Id);
 }
+
 
 // // get product by ID
 export async function getProductByID(productId:number) {
   let productArray = await getAllProducts();
-  console.log(productArray)
   let index = findProduct(productArray, productId);
-  if (!index)
+  if (index===-1)
     throw new Error(`Customer with ID:${productId} doesn't exist`);
   else return productArray[index];
 }

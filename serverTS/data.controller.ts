@@ -19,6 +19,7 @@ export async function getProduct(req:Request, res:Response) {
     res.json(customer);
   } catch (error) {
     // res.statusMessage=
-    res.status(400).send(error as Error);
+    res.status(400).send((error as Error).message);
+    console.log("400");
   }
 }
