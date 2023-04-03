@@ -1,0 +1,19 @@
+{
+    "categories": [
+        {
+            "categoryId": 1,
+            "categoryName": "Carnival",
+            "productsIds": []
+        },
+        {
+            "categoryId": 2,
+            "categoryName": "Professions",
+            "productsIds": []
+        },
+        {
+            "categoryId": 3,
+            "categoryName": "Alternative",
+            "productsIds": []
+        }
+    ]
+}

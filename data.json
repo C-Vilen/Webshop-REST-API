@@ -11,9 +11,9 @@
   "customers": [
     {
       "customerId": 1,
-      "customerName": "Mack",
+      "customerName": "Christian",
       "basketId": 1,
-      "password": "1234"
+      "password": "12345"
     },
     {
       "customerId": 2,

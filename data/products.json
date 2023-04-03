@@ -1,0 +1,9 @@
+[
+    {
+        "productId": 1,
+        "productName": "Duck 1",
+        "productDescription": "this is the description of duck 1",
+        "productPrice": 12,
+        "imgSrc": "/images/duckPicture.png"
+    }
+]
