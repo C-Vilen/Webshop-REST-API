@@ -1,1 +1,7 @@
-[]
+[
+    {
+        "basketId": 1,
+        "totalPrice": 0,
+        "productIds": []
+    }
+]

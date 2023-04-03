@@ -1,4 +1,4 @@
-import * as dataModel from "./data.model.js";
+import * as dataModel from "./products.model.js";
 import express, { Request, Response } from "express";
 
 //GET method to retrieve all products
@@ -24,25 +24,3 @@ export async function getProduct(req:Request, res:Response) {
   }
 }
 
-//GET method to retrieve all categories
-export async function getCategories(req:Request, res:Response) {
-  try {
-    let allCategories = await dataModel.getAllCategories();
-    res.json(allCategories);
-  } catch (error) {
-    // res.statusMessage=
-    res.status(400).send((error as Error).message);
-  }
-}
-
-//POST method to create a customer
-export async function postCustomer(req:Request, res:Response) {
-  try {
-    let newCustomer = req.body;
-    await dataModel.createCustomer(newCustomer);
-    res.end()
-  } catch (error) {
-    // res.statusMessage=
-    res.status(400).send((error as Error).message);
-  }
-}

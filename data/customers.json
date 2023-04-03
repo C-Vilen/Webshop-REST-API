@@ -1,8 +1,8 @@
 [
     {
-        "customerId": 2,
+        "customerId": 1,
         "customerName": "Christian",
-        "basketId": 2,
+        "basketId": 1,
         "password": "12345"
     }
 ]

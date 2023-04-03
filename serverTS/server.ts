@@ -1,5 +1,8 @@
-import { dataRouter } from "./data.route.js"
-import express, {Express, Request, Response} from "express";
+import {customersRouter} from "./customers/customers.route"
+import { basketsRouter } from "./baskets/baskets.route.js";
+import { categoriesRouter } from "./categories/categories.route.js";
+import { productsRouter } from "./products/products.route.js";
+import express, { Express, Request, Response } from "express";
 
 
 const app:Express = express();
@@ -9,7 +12,7 @@ const port = 3000;
 app.use(express.json());
 
 // paths '/customer' are handled by customerRouter
-app.use(dataRouter);
+app.use(customersRouter, basketsRouter,categoriesRouter,productsRouter);
 
 app.get('/', (req:Request, res:Response) => {
   res.send('Express + TypeScript Server');
