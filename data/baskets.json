@@ -1,7 +1,1 @@
-[
-    {
-        "basketId": 1,
-        "totalPrice": 0,
-        "productIds": []
-    }
-]
+[{"basketId":1,"totalPrice":0,"productIds":[]},{"basketId":2,"totalPrice":0,"productIds":[]}]

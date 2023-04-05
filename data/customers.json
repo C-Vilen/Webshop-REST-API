@@ -1,8 +1,1 @@
-[
-    {
-        "customerId": 1,
-        "customerName": "Christian",
-        "basketId": 1,
-        "password": "12345"
-    }
-]
+[{"customerId":1,"customerName":"Christian","basketId":1,"password":"12345"},{"customerId":2,"customerName":"Christian","basketId":2,"password":"12345"}]
