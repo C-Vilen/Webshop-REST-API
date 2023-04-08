@@ -8,5 +8,5 @@ export const basketsRouter = express.Router();
 basketsRouter.use(express.json());
 
 // route handlers
-basketsRouter.post('/baskets/:customerid/:productid', addProductToBasket);
+basketsRouter.put('/baskets/:customerid/:productid', addProductToBasket);
 basketsRouter.get('/baskets/:customerid', getBasketProducts)
