@@ -18,9 +18,14 @@ GET http://localhost:3000/categories HTTP/1.1
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
-{"customerId":2, "customerName": "Christian", "basketId": 2, "password": "12345" }
+{"customerId":1, "customerName": "Lena", "basketId": 1, "password": "12345" }
 
 ###
 
 //add product to basket - yet to be implemented
-# POST http://localhost:3000/baskets/ HTTP/1.1
+POST http://localhost:3000/baskets/4/1 HTTP/1.1
+
+###
+
+//get all products in a customer's basket
+GET http://localhost:3000/baskets/2 HTTP/1.1

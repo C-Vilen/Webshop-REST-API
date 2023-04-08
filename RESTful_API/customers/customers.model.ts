@@ -5,7 +5,7 @@ const CUSTOMERS_FILE = "./data/customers.json"
 //import methods for baskets
 
 //Types for JSON objects
-interface CustomerInterface{
+export interface CustomerInterface{
   customerId: number;
   customerName: String;
   basketId : number;
@@ -36,7 +36,7 @@ async function saveDefaultArray(data = []) {
 
 
 // Checks if customer with specific ID exists
-function findCustomer(customerArray:Array<CustomerInterface>, Id:number) {
+export function findCustomer(customerArray:Array<CustomerInterface>, Id:number) {
   return customerArray.findIndex(
     (currCustomer) => currCustomer.customerId === Id
   );
@@ -79,4 +79,10 @@ export async function createCustomer(newCustomer:CustomerInterface) {
       `Customer with Id:${newCustomer.customerId} already exists`
     );
   await saveCustomer(newCustomer);
+}
+
+export async function getCustomerObject(id: number): Promise<CustomerInterface | undefined> {
+  const customerArray: Array<CustomerInterface> = await getCustomersFile();
+  const customerObject: CustomerInterface | undefined = customerArray.find((customer: CustomerInterface) => customer.customerId === id);
+  return customerObject;
 }

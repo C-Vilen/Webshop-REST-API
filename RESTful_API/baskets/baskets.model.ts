@@ -1,4 +1,8 @@
+import exp from "constants";
 import * as fs from "fs";
+import { getProductByID, ProductInterface } from "../products/products.model";
+import { getCustomersFile, findCustomer, getCustomerObject } from "../customers/customers.model";
+import { CustomerInterface } from "../customers/customers.model";
 const BASKETS_FILE = "./data/baskets.json";
 
 //Types for JSON objects
@@ -57,3 +61,77 @@ export function createBasket(basketArray: Array<BasketInterface>) {
   saveBasket(newBasketId);
   return newBasketId;
 }
+
+export async function getBasketObject(id: number | undefined): Promise<BasketInterface | undefined> {
+  const basketArray: Array<BasketInterface> = await getBasketFile();
+  const basketObject: BasketInterface | undefined = basketArray.find((basket: BasketInterface) => basket.basketId === id);
+  return basketObject;
+}
+
+
+
+//Saves product in JSON to a customer's respective basket
+async function saveProductToBasket(customerBasketId:number|undefined, productId: number|undefined){
+  //Saves a customer to data.JSON
+  const existingData = fs.readFileSync(BASKETS_FILE, "utf-8");
+  const existingBaskets = JSON.parse(existingData);
+  existingBaskets.forEach((basket: { basketId: number | undefined; productIds: (number | undefined)[]; }) => {
+    if (basket.basketId === customerBasketId) {
+     basket.productIds.push(productId)
+   }
+  });
+
+  const updatedData = JSON.stringify(existingBaskets);
+  fs.writeFileSync(BASKETS_FILE, updatedData);
+}
+
+
+//Adds a product to a customers basket
+export async function addProductToBasket(customerId: number, productId: number) {
+  console.log("this is productID: " + productId);
+  
+  const productObject = await getProductByID(productId);  
+  const productObjectID = productObject?.productId;
+  const customerObject: CustomerInterface | undefined = await getCustomerObject(customerId);
+  let customerBasketId = customerObject?.basketId;
+  if (customerBasketId !== undefined) {
+    saveProductToBasket(customerBasketId, productObjectID)
+  }else {
+    throw new Error(
+      `Customer with Id:${customerId} does not exist OR Product with ID: ${productId} does not exist`
+    );
+  }
+}
+
+async function getProductArray(customerBasketId:number){
+  const basketArray: Array<BasketInterface> = await getBasketFile();
+  const customerBasket: BasketInterface | undefined = basketArray.find((currBasket: any) => currBasket.basketId === customerBasketId);
+  if (customerBasket !== undefined) {
+    const productIdsArray = customerBasket.productIds;
+    return productIdsArray
+  } else {
+    return []
+  }
+}
+
+export async function getBasketProducts(customerId: number) {
+  let productArray: ProductInterface[] = [];
+  const customerObject: CustomerInterface | undefined = await getCustomerObject(customerId); 
+  const customerBasketId = customerObject?.basketId;
+
+  if (customerBasketId !== undefined) {
+    const productIdsArray = await getProductArray(customerBasketId);    
+    for (const productId of productIdsArray) {
+      const product = await getProductByID(productId);
+      productArray.push(product);
+    }
+    return productArray;
+  } else {
+    throw new Error(
+      `Basket with Id:${customerBasketId} does not exist`
+    );
+  }
+}
+  
+
+  

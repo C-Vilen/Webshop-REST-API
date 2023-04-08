@@ -1,6 +1,6 @@
 // index.js
 import express from "express";
-import { } from "./baskets.controller.js";
+import { addProductToBasket, getBasketProducts } from "./baskets.controller.js";
 
 export const basketsRouter = express.Router();
 
@@ -8,3 +8,5 @@ export const basketsRouter = express.Router();
 basketsRouter.use(express.json());
 
 // route handlers
+basketsRouter.post('/baskets/:customerid/:productid', addProductToBasket);
+basketsRouter.get('/baskets/:customerid', getBasketProducts)

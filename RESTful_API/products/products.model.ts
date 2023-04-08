@@ -58,7 +58,7 @@ export async function getProductByID(productId:number) {
   let productArray = await getAllProductsWithDetails();
   let index = findProduct(productArray, productId);
   if (index===-1)
-    throw new Error(`Customer with ID:${productId} doesn't exist`);
+    throw new Error(`Product with ID:${productId} doesn't exist`);
   else return productArray[index];
 }
 
