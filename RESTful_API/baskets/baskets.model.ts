@@ -132,6 +132,10 @@ export async function getBasketProducts(customerId: number) {
     );
   }
 }
+
+export async function removeProduct(customerId: number, productId: number) {
+  
+}
   
 
   
