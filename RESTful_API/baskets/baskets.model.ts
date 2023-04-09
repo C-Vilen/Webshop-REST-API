@@ -145,38 +145,16 @@ export async function removeProduct(customerId: number, productId: number) {
   }
 }
 
-// //Saves product in JSON to a customer's respective basket
-// async function removeProductFromBasket(customerBasketId: number | undefined, productId: number | undefined) {
-//   //Saves a customer to data.JSON
-//   const existingData = fs.readFileSync(BASKETS_FILE, "utf-8");
-//   const existingBaskets = JSON.parse(existingData);
-//   existingBaskets.forEach((basket: { basketId: number | undefined; productIds: (number | undefined)[]; }) => {
-//     if (basket.basketId === customerBasketId) {
-//       basket.productIds.remove(productId)
-//     }
-//   });
-// }
 async function removeProductFromBasket(customerBasketId: number | undefined, productId: number | undefined) {
   const existingData = fs.readFileSync(BASKETS_FILE, "utf-8");
   const existingBaskets = JSON.parse(existingData);
   existingBaskets.forEach((basket: { basketId: number | undefined; productIds: (number | undefined)[]; }) => {
     if (basket.basketId === customerBasketId) {
-      basket.productIds.remove(productId);
+      const index = basket.productIds.indexOf(productId);
+      if (index !== -1) {
+        basket.productIds.splice(index, 1);
+      }
     }
   });
-  fs.writeFileSync(BASKETS_FILE, JSON.stringify(existingBaskets, null, 2));
+  fs.writeFileSync(BASKETS_FILE, JSON.stringify(existingBaskets));
 }
-
-declare global {
-  interface Array<T> {
-    remove(item: T): void;
-  }
-}
-
-Array.prototype.remove = function<T>(this: T[], item: T) {
-  const index = this.indexOf(item);
-  if (index !== -1) {
-    this.splice(index, 1);
-  }
-};
-
