@@ -22,10 +22,14 @@ content-type: application/json
 
 ###
 
-//add product to basket - yet to be implemented
-POST http://localhost:3000/baskets/4/1 HTTP/1.1
+//get all products in a customer's basket
+GET http://localhost:3000/baskets/2 HTTP/1.1
 
 ###
 
-//get all products in a customer's basket
-GET http://localhost:3000/baskets/2 HTTP/1.1
+//add product to basket - yet to be implemented
+PUT http://localhost:3000/baskets/1/1 HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/baskets/4/1 HTTP/1.1
