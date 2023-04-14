@@ -35,7 +35,7 @@ export async function getAllCategories() {
   return categoryArray.categories;
 }
 
-
+// Returns specfic categoryArray with associated product objects
 export async function getProductsByCategory(categoryId:number) {
   let categoryArray = await getAllCategories();
   let index = categoryArray.findIndex((currCategory:any) => currCategory.categoryId === categoryId)
