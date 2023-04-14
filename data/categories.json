@@ -3,11 +3,7 @@
         {
             "categoryId": 1,
             "categoryName": "Carnival",
-            "productsIds": [
-                1,
-                1,
-                1
-            ]
+            "productsIds": []
         },
         {
             "categoryId": 2,
