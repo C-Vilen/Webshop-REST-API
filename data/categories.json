@@ -3,17 +3,17 @@
         {
             "categoryId": 1,
             "categoryName": "Carnival",
-            "productsIds": []
+            "productsIds": [1, 9, 13, 17, 6, 4, 3, 10]
         },
         {
             "categoryId": 2,
             "categoryName": "Professions",
-            "productsIds": []
+            "productsIds": [6, 7, 8, 11, 16, 18, 19]
         },
         {
             "categoryId": 3,
             "categoryName": "Alternative",
-            "productsIds": []
+            "productsIds": [14, 15, 20, 12, 10, 5, 4, 2]
         }
     ]
 }
