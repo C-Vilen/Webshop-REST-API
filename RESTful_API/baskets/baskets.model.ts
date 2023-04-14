@@ -96,7 +96,7 @@ export async function addProductToBasket(customerId: number, productId: number) 
     saveProductToBasket(customerBasketId, productObjectID)
   }else {
     throw new Error(
-      `Customer with Id:${customerId} does not exist OR Product with ID: ${productId} does not exist`
+      `Customer with Id:${customerId} does not exist.`
     );
   }
 }
@@ -140,7 +140,7 @@ export async function removeProduct(customerId: number, productId: number) {
     removeProductFromBasket(customerBasketId, productObjectID)
   }else {
     throw new Error(
-      `Customer with Id:${customerId} does not exist OR Product with ID: ${productId} does not exist`
+      `Customer with Id:${customerId} does not exist`
     );
   }
 }

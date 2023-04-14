@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { ProductInterface } from "../products/products.model"
+import { ProductInterface, getProductByID } from "../products/products.model"
 const CATEGORIES_FILE = "./data/categories.json"
 
 interface CategoryInterface{
@@ -31,6 +31,26 @@ async function saveDefaultArray(data = []) {
 
 //return all categories
 export async function getAllCategories() {
-  let dataArray = await getCategoriesFile();
-  return dataArray.categories;
+  let categoryArray = await getCategoriesFile();
+  return categoryArray.categories;
+}
+
+
+export async function getProductsByCategory(categoryId:number) {
+  let categoryArray = await getAllCategories();
+  // let index = findProduct(categoryArray, categoryId);
+  let index = categoryArray.findIndex((currCategory:any) => currCategory.categoryId === categoryId)
+  let parName:any = categoryArray[index] 
+  console.log("index: " + index)
+  console.log(categoryArray[index])
+
+  let productsArray:any = [];
+  for (let productID of categoryArray[index]) {
+    const product = await getProductByID(productID)
+    productsArray.push(product)
+  }
+  console.log(productsArray)
+  if (index===-1)
+    throw new Error('Category does not exist');
+  else return categoryArray[index];
 }

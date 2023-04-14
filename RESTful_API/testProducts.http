@@ -1,20 +1,25 @@
 
-//get products without productDescription
+//Get all products without productDescription
 GET http://localhost:3000/products HTTP/1.1
 
 ###
 
-//get specific produxt
+//Get specific product
 GET http://localhost:3000/products/1 HTTP/1.1
 
 ###
 
-//get all categories
+//Get all categories
 GET http://localhost:3000/categories HTTP/1.1
 
 ###
 
-//create new customer
+//Get all products associated with specific categoryID
+GET http://localhost:3000/categories/1 HTTP/1.1
+
+###
+
+//Create new customer
 POST http://localhost:3000/customers HTTP/1.1
 content-type: application/json
 
@@ -22,14 +27,16 @@ content-type: application/json
 
 ###
 
-//get all products in a customer's basket
-GET http://localhost:3000/baskets/2 HTTP/1.1
+//Get all products in a customer's basket
+GET http://localhost:3000/baskets/1 HTTP/1.1
 
 ###
 
-//add product to basket - yet to be implemented
+//Add product to basket
 PUT http://localhost:3000/baskets/1/1 HTTP/1.1
 
 ###
 
-DELETE http://localhost:3000/baskets/4/1 HTTP/1.1
+//Delete product from basket
+DELETE http://localhost:3000/baskets/5/1 HTTP/1.1
+
