@@ -5,7 +5,7 @@ const CATEGORIES_FILE = "./data/categories.json"
 interface CategoryInterface{
   categoryId: number;
   categoryName: String;
-  productIds: Array<ProductInterface>;
+  productIds: Array<number>;
 }
 
 // return all data from file
@@ -38,18 +38,14 @@ export async function getAllCategories() {
 
 export async function getProductsByCategory(categoryId:number) {
   let categoryArray = await getAllCategories();
-  // let index = findProduct(categoryArray, categoryId);
   let index = categoryArray.findIndex((currCategory:any) => currCategory.categoryId === categoryId)
-  let parName:any = categoryArray[index] 
-  console.log("index: " + index)
-  console.log(categoryArray[index])
-  console.log(categoryArray[index].productIdsArray)
   let productsArray:any = [];
-  for (let productID of categoryArray[index]) {
+  for (let productID of categoryArray[index].productsIds) {
     const product = await getProductByID(productID)
     productsArray.push(product)
   }
-  console.log(productsArray)
+  // Replace the productsIds array with the new productsArray
+  categoryArray[index].productsIds = productsArray;
   if (index===-1)
     throw new Error('Category does not exist');
   else return categoryArray[index];
