@@ -23,16 +23,3 @@ export async function getProduct(req:Request, res:Response) {
     res.status(400).send((error as Error).message);
   }
 }
-
-//GET method to retrieve all products within a specific category
-export async function getProductsByCategory(req:Request, res:Response) {
-  try {
-    let id = parseInt(req.params.categoryId);
-    let category=await dataModel.getProductsByCategory(id);
-    res.json(category);
-  }
-  catch (error) {
-    res.status(400).send((error as Error).message);
-  }
-}
-

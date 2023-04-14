@@ -62,11 +62,3 @@ export async function getProductByID(productId:number) {
   else return productArray[index];
 }
 
-export async function getProductsByCategory(categoryId:number) {
-  let productArray = await getAllProductsWithDetails();
-  let index = findProduct(productArray, categoryId);
-  if (index===-1)
-    throw new Error('Category does not exist');
-  else return productArray[index];
-}
-

@@ -6,9 +6,9 @@ export async function postCustomer(req:Request, res:Response) {
   try {
     let newCustomer = req.body;
     await dataModel.createCustomer(newCustomer);
-    res.end()
+    res.status(201).send('Customer created successfully');
   } catch (error) {
     // res.statusMessage=
-    res.status(400).send((error as Error).message);
+    res.status(404).send((error as Error).message);
   }
 }
