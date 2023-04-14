@@ -43,7 +43,7 @@ export async function getProductsByCategory(categoryId:number) {
   let parName:any = categoryArray[index] 
   console.log("index: " + index)
   console.log(categoryArray[index])
-
+  console.log(categoryArray[index].productIdsArray)
   let productsArray:any = [];
   for (let productID of categoryArray[index]) {
     const product = await getProductByID(productID)
