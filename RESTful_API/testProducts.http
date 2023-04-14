@@ -27,13 +27,18 @@ content-type: application/json
 
 ###
 
+//Get details of specific customer
+GET http://localhost:3000/customers/3 HTTP/1.1
+
+###
+
 //Get all products in a customer's basket
 GET http://localhost:3000/baskets/1 HTTP/1.1
 
 ###
 
 //Add product to basket
-PUT http://localhost:3000/baskets/1/1 HTTP/1.1
+PUT http://localhost:3000/baskets/2/4 HTTP/1.1
 
 ###
 

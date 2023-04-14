@@ -1,14 +1,14 @@
 import * as fs from "fs";
-import {createBasket, BasketInterface, getBasketFile} from "../baskets/baskets.model"
+import { createBasket, BasketInterface, getBasketFile } from "../baskets/baskets.model"
 const DATA_FILE = "./data.json";
 const CUSTOMERS_FILE = "./data/customers.json"
 //import methods for baskets
 
 //Types for JSON objects
-export interface CustomerInterface{
+export interface CustomerInterface {
   customerId: number;
   customerName: String;
-  basketId : number;
+  basketId: number;
   password: String;
 }
 
@@ -19,7 +19,7 @@ export async function getCustomersFile() {
     let dataTxt = await fs.readFileSync(CUSTOMERS_FILE, "utf-8");
     let data = JSON.parse(dataTxt);
     return data;
-  } catch (err:any) {
+  } catch (err: any) {
     if (err.code === "ENOENT") {
       // file does not exits
       await saveDefaultArray([]); // create a new file with ampty array
@@ -36,7 +36,7 @@ async function saveDefaultArray(data = []) {
 
 
 // Checks if customer with specific ID exists
-export function findCustomer(customerArray:Array<CustomerInterface>, Id:number) {
+export function findCustomer(customerArray: Array<CustomerInterface>, Id: number) {
   return customerArray.findIndex(
     (currCustomer) => currCustomer.customerId === Id
   );
@@ -44,8 +44,8 @@ export function findCustomer(customerArray:Array<CustomerInterface>, Id:number) 
 
 //generate a new ID for customer
 function getCustomerID(customerArray: Array<CustomerInterface>) {
-  let newId:number = 1;
-  customerArray.forEach(element => { 
+  let newId: number = 1;
+  customerArray.forEach(element => {
     if (element.customerId >= newId) {
       newId = element.customerId + 1;
     }
@@ -55,7 +55,7 @@ function getCustomerID(customerArray: Array<CustomerInterface>) {
 
 
 //Saves a customer to data.JSON
-async function saveCustomer(customer:CustomerInterface) {
+async function saveCustomer(customer: CustomerInterface) {
   let existingData = fs.readFileSync(CUSTOMERS_FILE, "utf-8");
   let existingCustomers = JSON.parse(existingData);
   existingCustomers.push(customer);
@@ -64,8 +64,8 @@ async function saveCustomer(customer:CustomerInterface) {
 }
 
 // create a new customer with unique customerID and basketID
-export async function createCustomer(newCustomer:CustomerInterface) {
-  let customerArray:Array<CustomerInterface> = await getCustomersFile();
+export async function createCustomer(newCustomer: CustomerInterface) {
+  let customerArray: Array<CustomerInterface> = await getCustomersFile();
   //generates new customerID
   let newCustomerId: number = getCustomerID(customerArray);
   newCustomer.customerId = newCustomerId;
@@ -74,7 +74,7 @@ export async function createCustomer(newCustomer:CustomerInterface) {
   let newBasketId: number = createBasket(basketArray);
   newCustomer.basketId = newBasketId;
   //check if customer already exists
-  if (findCustomer(customerArray, newCustomer.customerId) !== -1 )
+  if (findCustomer(customerArray, newCustomer.customerId) !== -1)
     throw new Error(
       `Customer with Id:${newCustomer.customerId} already exists`
     );
@@ -85,4 +85,9 @@ export async function getCustomerObject(id: number): Promise<CustomerInterface |
   const customerArray: Array<CustomerInterface> = await getCustomersFile();
   const customerObject: CustomerInterface | undefined = customerArray.find((customer: CustomerInterface) => customer.customerId === id);
   return customerObject;
+}
+
+export async function getCustomer(customerId: number) {
+  const customerArray: Array<CustomerInterface> = await getCustomersFile();
+  return customerArray.find((customer) => customer.customerId === customerId);
 }
