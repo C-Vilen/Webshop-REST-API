@@ -38,5 +38,5 @@ PUT http://localhost:3000/baskets/1/1 HTTP/1.1
 ###
 
 //Delete product from basket
-DELETE http://localhost:3000/baskets/5/1 HTTP/1.1
+DELETE http://localhost:3000/baskets/1/1 HTTP/1.1
 
