@@ -89,5 +89,11 @@ export async function getCustomerObject(id: number): Promise<CustomerInterface |
 
 export async function getCustomer(customerId: number) {
   const customerArray: Array<CustomerInterface> = await getCustomersFile();
-  return customerArray.find((customer) => customer.customerId === customerId);
+  let customer: CustomerInterface | undefined = customerArray.find((customer) => customer.customerId === customerId);
+  if (customer !== undefined) {
+    return customer
+  } else {
+    throw new Error(`Customer doesn't exist`);
+
+  }
 }
