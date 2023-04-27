@@ -1,19 +1,126 @@
 {
     "categories": [
         {
+            "overCategory": "Rubber Ducks",
             "categoryId": 1,
             "categoryName": "Carnival",
-            "productsIds": [1, 9, 13, 17, 6, 4, 3, 10]
+            "productsIds": [
+                1,
+                9,
+                13,
+                17,
+                6,
+                4,
+                3,
+                10
+            ]
         },
         {
+            "overCategory": "Rubber Ducks",
             "categoryId": 2,
             "categoryName": "Professions",
-            "productsIds": [6, 7, 8, 11, 16, 18, 19]
+            "productsIds": [
+                6,
+                7,
+                8,
+                11,
+                16,
+                18,
+                19
+            ]
         },
         {
+            "overCategory": "Rubber Ducks",
             "categoryId": 3,
             "categoryName": "Alternative",
-            "productsIds": [14, 15, 20, 12, 10, 5, 4, 2]
+            "productsIds": [
+                14,
+                15,
+                20,
+                12,
+                10,
+                5,
+                4,
+                2
+            ]
+        },
+        {
+            "overCategory": "Accessories",
+            "categoryId": 4,
+            "categoryName": "Bags",
+            "productsIds": [
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+            ]
+        },
+        {
+            "overCategory": "Accessories",
+            "categoryId": 5,
+            "categoryName": "Jewlery",
+            "productsIds": [
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+            ]
+        },
+        {
+            "overCategory": "Accessories",
+            "categoryId": 6,
+            "categoryName": "Keyrings",
+            "productsIds": [
+                33,
+                34,
+                35,
+                36,
+                37,
+                38
+            ]
+        },
+        {
+            "overCategory": "Clothes",
+            "categoryId": 7,
+            "categoryName": "Hats",
+            "productsIds": [
+                39,
+                40,
+                41,
+                42,
+                43,
+                44
+            ]
+        },
+        {
+            "overCategory": "Clothes",
+            "categoryId": 8,
+            "categoryName": "Socks",
+            "productsIds": [
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+            ]
+        },
+        {
+            "overCategory": "Clothes",
+            "categoryId": 9,
+            "categoryName": "Ties",
+            "productsIds": [
+                51,
+                52,
+                53,
+                54,
+                55,
+                56
+            ]
         }
     ]
 }
