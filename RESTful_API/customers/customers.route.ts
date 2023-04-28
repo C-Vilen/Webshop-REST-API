@@ -1,6 +1,6 @@
 // index.js
 import express from "express";
-import { postCustomer, getCustomer } from "./customers.controller.js";
+import { postCustomer, getCustomer, getCustomers } from "./customers.controller.js";
 
 export const customersRouter = express.Router();
 
@@ -10,5 +10,5 @@ customersRouter.use(express.json());
 // route handlers
 
 customersRouter.post("/customers", postCustomer);
-
-customersRouter.get("/customers/:id", getCustomer)
+customersRouter.get("/customers:email", getCustomers);
+customersRouter.get("/customers/:id", getCustomer);

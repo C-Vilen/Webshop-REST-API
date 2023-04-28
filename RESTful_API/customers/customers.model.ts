@@ -98,3 +98,9 @@ export async function getCustomer(customerId: number) {
 
   }
 }
+
+//return all customers
+export async function getCustomers() {
+  let customerArray = await getCustomersFile();
+  return customerArray;
+}

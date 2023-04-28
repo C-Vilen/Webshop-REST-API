@@ -27,6 +27,12 @@ content-type: application/json
 
 ###
 
+//GET customers
+GET http://localhost:3000/customers HTTP/1.1
+
+
+###
+
 //Get details of specific customer
 GET http://localhost:3000/customers/3 HTTP/1.1
 

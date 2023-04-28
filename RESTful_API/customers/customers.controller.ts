@@ -22,3 +22,12 @@ export async function getCustomer(req: Request, res: Response) {
     res.status(404).send((error as Error).message);
   }
 }
+
+export async function getCustomers(req: Request, res: Response) {
+  try {
+    let customer = await dataModel.getCustomers();
+    res.json(customer);
+  } catch (error) {
+    res.status(404).send((error as Error).message);
+  }
+}

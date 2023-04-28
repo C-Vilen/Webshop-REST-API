@@ -22,5 +22,13 @@
         "email": "test@itu.dk",
         "basketId": 3,
         "password": "12345"
+    },
+    {
+        "firstName": "John",
+        "lastName": "Johnsen",
+        "email": "John@mail.dk",
+        "password": "1234",
+        "customerId": 4,
+        "basketId": 4
     }
 ]
