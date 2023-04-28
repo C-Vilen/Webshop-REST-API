@@ -1,13 +1,14 @@
 import * as fs from "fs";
 import { createBasket, BasketInterface, getBasketFile } from "../baskets/baskets.model"
-const DATA_FILE = "./data.json";
 const CUSTOMERS_FILE = "./data/customers.json"
 //import methods for baskets
 
 //Types for JSON objects
 export interface CustomerInterface {
   customerId: number;
-  customerName: String;
+  firstName: String;
+  lastName: String;
+  email: String;
   basketId: number;
   password: String;
 }

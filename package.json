@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/C-Vilen/Webshop-REST-API#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2"
   },
   "devDependencies": {
