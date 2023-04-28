@@ -14,6 +14,15 @@ app.use(express.json());
 // paths '/customer' are handled by customerRouter
 app.use(customersRouter, basketsRouter,categoriesRouter,productsRouter);
 
+// Allow access control from different port i.e. the react webshop project.
+app.use((req, res, next) => {
+  //cors implement here
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 app.get('/', (req:Request, res:Response) => {
   res.send('Express + TypeScript Server');
 });
@@ -21,3 +30,4 @@ app.get('/', (req:Request, res:Response) => {
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
+
