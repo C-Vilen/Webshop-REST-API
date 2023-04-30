@@ -10,5 +10,5 @@ customersRouter.use(express.json());
 // route handlers
 
 customersRouter.post("/customers", postCustomer);
-customersRouter.get("/customers:email", getCustomers);
+customersRouter.get("/customers", getCustomers);
 customersRouter.get("/customers/:id", getCustomer);
