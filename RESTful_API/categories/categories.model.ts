@@ -56,6 +56,35 @@ export async function getAllOverCategories() {
 }
 
 
+//return all subcategories from a specific overcategory ID
+export async function getOverCategoryByOcID(ocId: number) {
+  let categoryArray = await getCategoriesFile();
+
+  let filteredCategory = categoryArray.categories.find((category: { ocId: number; }) => {
+    return category.ocId === ocId;
+  });
+
+  if (filteredCategory) {
+    let outputCategory = filteredCategory.subCategories.map((subCategory: { categoryId: any; categoryName: any; productsIds: any; }) => {
+      return {
+        categoryId: subCategory.categoryId,
+        categoryName: subCategory.categoryName,
+        productsIds: subCategory.productsIds
+      };
+    });
+
+    return {
+      overCategory: filteredCategory.overCategory,
+      ocId: filteredCategory.ocId,
+      subCategories: outputCategory
+    };
+  } else {
+    return null;
+  }
+}
+
+
+
 // // Returns specfic categoryArray with associated product objects
 // export async function getProductsByCategory(categoryId:number) {
 //   let categoryArray = await getAllCategories();

@@ -23,6 +23,17 @@ export async function getOverCategories(req:Request, res:Response) {
   }
 }
 
+//GET method to retrieve all categories
+export async function getOverCategoryByOcID(req:Request, res:Response) {
+  try {
+    let OcId = parseInt(req.params.id);
+    let allCategories = await dataModel.getOverCategoryByOcID(OcId);
+    res.json(allCategories);
+  } catch (error) {
+    res.status(400).send((error as Error).message);
+  }
+}
+
 // //GET method to retrieve all products within a specific category
 // export async function getProductsByCategory(req:Request, res:Response) {
 //   try {
