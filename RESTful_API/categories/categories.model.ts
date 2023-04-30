@@ -2,8 +2,14 @@ import * as fs from "fs";
 import { ProductInterface, getProductByID } from "../products/products.model"
 const CATEGORIES_FILE = "./data/categories.json"
 
-interface CategoryInterface{
-  categoryId: number;
+interface OverCategoryInterface{
+  overCategory: String;
+  ocId: Number;
+  subCategories: Array<object>
+}
+
+interface SubCategoryInterface{
+  categoryId: Number;
   categoryName: String;
   productIds: Array<number>;
 }
@@ -35,18 +41,33 @@ export async function getAllCategories() {
   return categoryArray.categories;
 }
 
-// Returns specfic categoryArray with associated product objects
-export async function getProductsByCategory(categoryId:number) {
-  let categoryArray = await getAllCategories();
-  let index = categoryArray.findIndex((currCategory:any) => currCategory.categoryId === categoryId)
-  let productsArray:any = [];
-  for (let productID of categoryArray[index].productsIds) {
-    const product = await getProductByID(productID)
-    productsArray.push(product)
-  }
-  // Replace the productsIds array with the new productsArray
-  categoryArray[index].productsIds = productsArray;
-  if (index===-1)
-    throw new Error('Category does not exist');
-  else return categoryArray[index];
+//return all over categories with ID
+export async function getAllOverCategories() {
+  let categoryArray = await getCategoriesFile();
+
+  let outputCategoryArray:any = categoryArray.categories.map((category: { overCategory: String; ocId: Number; }) => {
+    return {
+      overCategory: category.overCategory,
+      ocId: category.ocId
+    };
+  });
+
+  return outputCategoryArray;
 }
+
+
+// // Returns specfic categoryArray with associated product objects
+// export async function getProductsByCategory(categoryId:number) {
+//   let categoryArray = await getAllCategories();
+//   let index = categoryArray.findIndex((currCategory:any) => currCategory.categoryId === categoryId)
+//   let productsArray:any = [];
+//   for (let productID of categoryArray[index].productsIds) {
+//     const product = await getProductByID(productID)
+//     productsArray.push(product)
+//   }
+//   // Replace the productsIds array with the new productsArray
+//   categoryArray[index].productsIds = productsArray;
+//   if (index===-1)
+//     throw new Error('Category does not exist');
+//   else return categoryArray[index];
+// }
