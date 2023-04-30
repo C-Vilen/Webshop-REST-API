@@ -14,19 +14,18 @@ GET http://localhost:3000/categories HTTP/1.1
 
 ###
 
-
-//Get all over categories
+//Get all over categories without sub categories
 GET http://localhost:3000/categories/overcategories HTTP/1.1
 
 ###
 
-//Get all sub categories to a over category
+//Get all sub categories to a specific over category
 GET http://localhost:3000/categories/overcategories/1 HTTP/1.1
 
 ###
 
-//Get all products associated with specific categoryID
-GET http://localhost:3000/categories/1 HTTP/1.1
+//Get all products (without description) associated with specific sub categoryID
+GET http://localhost:3000/categories/overcategories/1/1 HTTP/1.1
 
 ###
 

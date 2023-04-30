@@ -13,35 +13,36 @@ export async function getCategories(req:Request, res:Response) {
   }
 }
 
-//GET method to retrieve all categories
+//GET method to retrieve all over categories
 export async function getOverCategories(req:Request, res:Response) {
   try {
-    let allCategories = await dataModel.getAllOverCategories();
-    res.json(allCategories);
+    let allOverCategories = await dataModel.getAllOverCategories();
+    res.json(allOverCategories);
   } catch (error) {
     res.status(400).send((error as Error).message);
   }
 }
 
-//GET method to retrieve all categories
+//GET method to retrieve a specific over category
 export async function getOverCategoryByOcID(req:Request, res:Response) {
   try {
-    let OcId = parseInt(req.params.id);
-    let allCategories = await dataModel.getOverCategoryByOcID(OcId);
-    res.json(allCategories);
+    let OcId = parseInt(req.params.ocID);
+    let Overcategory = await dataModel.getOverCategoryByOcID(OcId);
+    res.json(Overcategory);
   } catch (error) {
     res.status(400).send((error as Error).message);
   }
 }
 
-// //GET method to retrieve all products within a specific category
-// export async function getProductsByCategory(req:Request, res:Response) {
-//   try {
-//     let id = parseInt(req.params.id);
-//     let category=await dataModel.getProductsByCategory(id);
-//     res.json(category);
-//   }
-//   catch (error) {
-//     res.status(400).send((error as Error).message);
-//   }
-// }
+//GET method to retrieve all products within a specific sub category
+export async function getProductsBySubCategory(req:Request, res:Response) {
+  try {
+    let ocID = parseInt(req.params.ocID);
+    let subCatID = parseInt(req.params.subID);
+    let productsFromSub = await dataModel.getProductsBySubCategory(ocID, subCatID);
+    res.json(productsFromSub);
+  }
+  catch (error) {
+    res.status(400).send((error as Error).message);
+  }
+}
