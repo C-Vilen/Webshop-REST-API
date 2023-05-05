@@ -104,3 +104,14 @@ export async function getCustomers() {
   let customerArray = await getCustomersFile();
   return customerArray;
 }
+
+
+// Checks if customer with specific ID exists
+export async function findGuest() {
+  let customerArray = await getCustomersFile();
+
+  const guestCustomer = customerArray.find(
+    (currCustomer: { firstName: string; }) => currCustomer.firstName === "Guest"
+  );
+  return guestCustomer;
+}

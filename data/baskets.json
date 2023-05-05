@@ -1,1 +1,31 @@
-[{"basketId":1,"totalPrice":0,"productIds":[1]},{"basketId":2,"totalPrice":0,"productIds":[]},{"basketId":3,"totalPrice":0,"productIds":[]},{"basketId":4,"totalPrice":0,"productIds":[]}]
+[
+    {
+        "basketId": 1,
+        "totalPrice": 0,
+        "productIds": [
+            1
+        ]
+    },
+    {
+        "basketId": 2,
+        "totalPrice": 0,
+        "productIds": [
+            4
+        ]
+    },
+    {
+        "basketId": 3,
+        "totalPrice": 0,
+        "productIds": []
+    },
+    {
+        "basketId": 4,
+        "totalPrice": 0,
+        "productIds": []
+    },
+    {
+        "basketId": 5,
+        "totalPrice": 0,
+        "productIds": []
+    }
+]

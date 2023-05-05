@@ -30,5 +30,13 @@
         "password": "1234",
         "customerId": 4,
         "basketId": 4
+    },
+    {
+        "firstName": "Guest",
+        "lastName": "",
+        "email": "",
+        "password": "",
+        "customerId": 5,
+        "basketId": 5
     }
 ]

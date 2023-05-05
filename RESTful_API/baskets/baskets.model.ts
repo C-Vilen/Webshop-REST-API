@@ -158,3 +158,27 @@ async function removeProductFromBasket(customerBasketId: number | undefined, pro
   });
   fs.writeFileSync(BASKETS_FILE, JSON.stringify(existingBaskets));
 }
+
+
+export async function removeAllProducts(customerId: number) {
+  const customerObject: CustomerInterface | undefined = await getCustomerObject(customerId);
+  let customerBasketId = customerObject?.basketId;
+  if (customerBasketId !== undefined) {
+    removeAllProductFromBasket(customerBasketId);
+  }else {
+    throw new Error(
+      `Customer with Id:${customerId} does not exist`
+    );
+  }
+}
+
+async function removeAllProductFromBasket(customerBasketId: number | undefined) {
+  const existingData = fs.readFileSync(BASKETS_FILE, "utf-8");
+  const existingBaskets = JSON.parse(existingData);
+  existingBaskets.forEach((basket: { basketId: number | undefined; productIds: (number | undefined)[]; }) => {
+    if (basket.basketId === customerBasketId) {
+      basket.productIds = [];
+    }
+  });
+  fs.writeFileSync(BASKETS_FILE, JSON.stringify(existingBaskets));
+}

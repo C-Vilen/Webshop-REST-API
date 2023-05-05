@@ -38,4 +38,16 @@ export async function getBasketProducts(req: Request, res: Response) {
         res.status(400).send((error as Error).message);
       }
 }
+
+export async function removeAllProducts(req: Request, res: Response) {
+  try {
+      let customerId = parseInt(req.params.customerid);     
+      await dataModel.removeAllProducts(customerId);
+      res.end();
+      
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send((error as Error).message);
+  }
+}
   
