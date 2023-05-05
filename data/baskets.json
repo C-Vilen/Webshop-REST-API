@@ -9,7 +9,9 @@
     {
         "basketId": 2,
         "totalPrice": 0,
-        "productIds": []
+        "productIds": [
+            4
+        ]
     },
     {
         "basketId": 3,
