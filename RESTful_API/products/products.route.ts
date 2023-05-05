@@ -1,6 +1,7 @@
 // index.js
 import express from "express";
-import { getAllProducts, getProduct} from "./products.controller.js";
+import { getAllProducts, getNewlyAddedProducts, getProduct} from "./products.controller.js";
+
 
 export const productsRouter = express.Router();
 
@@ -9,4 +10,5 @@ productsRouter.use(express.json());
 
 // route handlers
 productsRouter.get("/products", getAllProducts);
+productsRouter.get("/products/carrousel", getNewlyAddedProducts);
 productsRouter.get("/products/:id", getProduct);

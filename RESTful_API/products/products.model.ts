@@ -55,10 +55,16 @@ function findProduct(productArray:any, Id:any) {
 
 //return product with specific ID
 export async function getProductByID(productId:number) {
-  let productArray = await getAllProductsWithDetails();
+  let productArray = await getProductsFile();
   let index = findProduct(productArray, productId);
   if (index===-1)
     throw new Error(`Product with ID:${productId} doesn't exist`);
   else return productArray[index];
 }
 
+//Return the 10 newly added products by product id
+export async function getNewlyAddedProducts() {
+  let productArray = await getProductsFile();
+  let outputArray = productArray.slice(-10);
+  return outputArray;
+}

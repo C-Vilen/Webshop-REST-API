@@ -4,6 +4,11 @@ GET http://localhost:3000/products HTTP/1.1
 
 ###
 
+//Get newly added products
+GET http://localhost:3000/products/carrousel HTTP/1.1
+
+###
+
 //Get specific product
 GET http://localhost:3000/products/1 HTTP/1.1
 

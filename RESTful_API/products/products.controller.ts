@@ -23,3 +23,14 @@ export async function getProduct(req:Request, res:Response) {
     res.status(400).send((error as Error).message);
   }
 }
+
+//GET method to retrieve new products
+export async function getNewlyAddedProducts(req:Request, res:Response){
+  try{
+    let newProducts = await dataModel.getNewlyAddedProducts();
+    res.json(newProducts);
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send((error as Error).message);
+  }
+}
