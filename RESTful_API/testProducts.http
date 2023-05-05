@@ -60,7 +60,12 @@ GET http://localhost:3000/baskets/1 HTTP/1.1
 ###
 
 //Add product to basket
-PUT http://localhost:3000/baskets/2/4 HTTP/1.1
+PUT http://localhost:3000/baskets/5/4 HTTP/1.1
+
+###
+
+//Delete all products from a specific customer basket
+DELETE http://localhost:3000/baskets/5 HTTP/1.1
 
 ###
 
