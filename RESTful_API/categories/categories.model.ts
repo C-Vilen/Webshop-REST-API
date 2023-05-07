@@ -46,10 +46,12 @@ export async function getAllCategories() {
 export async function getAllOverCategories() {
   let categoryArray = await getCategoriesFile();
 
-  let outputCategoryArray:OverCategoryInterface = categoryArray.categories.map((category: { overCategory: String; ocId: Number; }) => {
+  let outputCategoryArray:OverCategoryInterface = categoryArray.categories.map((category: { overCategory: String; ocId: Number; imgSrc: String; priceRange: String;  }) => {
     return {
       overCategory: category.overCategory,
-      ocId: category.ocId
+      ocId: category.ocId,
+      imgSrc: category.imgSrc,
+      priceRange: category.priceRange
     };
   });
 

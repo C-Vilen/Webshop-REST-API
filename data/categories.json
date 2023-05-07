@@ -3,10 +3,13 @@
         {
             "overCategory": "Rubber Ducks",
             "ocId": 1,
+            "imgSrc": "/profProductsImage.png",
+            "priceRange": "49",
             "subCategories": [
                 {
                     "categoryId": 1,
                     "categoryName": "Carnival",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         1,
                         9,
@@ -21,6 +24,7 @@
                 {
                     "categoryId": 2,
                     "categoryName": "Professions",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         6,
                         7,
@@ -34,6 +38,7 @@
                 {
                     "categoryId": 3,
                     "categoryName": "Alternative",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         14,
                         15,
@@ -50,10 +55,13 @@
         {
             "overCategory": "Accessories",
             "ocId": 2,
+            "imgSrc": "/allProductsImage.png",
+            "priceRange": "39 - 109",
             "subCategories": [
                 {
                     "categoryId": 4,
                     "categoryName": "Bags",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         21,
                         22,
@@ -66,6 +74,7 @@
                 {
                     "categoryId": 5,
                     "categoryName": "Jewlery",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         27,
                         28,
@@ -78,6 +87,7 @@
                 {
                     "categoryId": 6,
                     "categoryName": "Keyrings",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         33,
                         34,
@@ -92,10 +102,13 @@
         {
             "overCategory": "Clothes",
             "ocId": 3,
+            "imgSrc": "/dressUpProductsImage.png",
+            "priceRange": "39 - 69",
             "subCategories": [
                 {
                     "categoryId": 7,
                     "categoryName": "Hats",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         39,
                         40,
@@ -108,6 +121,7 @@
                 {
                     "categoryId": 8,
                     "categoryName": "Socks",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         45,
                         46,
@@ -120,6 +134,7 @@
                 {
                     "categoryId": 9,
                     "categoryName": "Ties",
+                    "imgSrc": "/profProductsImage.png",
                     "productsIds": [
                         51,
                         52,
