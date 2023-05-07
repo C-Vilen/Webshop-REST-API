@@ -67,10 +67,12 @@ export async function getOverCategoryByOcID(ocId: number) {
   });
 
   if (filteredCategory) {
-    let outputCategory = filteredCategory.subCategories.map((subCategory: { categoryId: Number; categoryName: String; productsIds: Array<Number>; }) => {
+    let outputCategory = filteredCategory.subCategories.map((subCategory: { categoryId: Number; categoryName: String; imgSrc: String; priceRange: String; productsIds: Array<Number>; }) => {
       return {
         categoryId: subCategory.categoryId,
         categoryName: subCategory.categoryName,
+        imgSrc: subCategory.imgSrc,
+        priceRange: subCategory.priceRange,
         productsIds: subCategory.productsIds
       };
     });

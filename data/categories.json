@@ -10,6 +10,7 @@
                     "categoryId": 1,
                     "categoryName": "Carnival",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         1,
                         9,
@@ -25,6 +26,7 @@
                     "categoryId": 2,
                     "categoryName": "Professions",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         6,
                         7,
@@ -39,6 +41,7 @@
                     "categoryId": 3,
                     "categoryName": "Alternative",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         14,
                         15,
@@ -62,6 +65,7 @@
                     "categoryId": 4,
                     "categoryName": "Bags",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         21,
                         22,
@@ -75,6 +79,7 @@
                     "categoryId": 5,
                     "categoryName": "Jewlery",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         27,
                         28,
@@ -88,6 +93,7 @@
                     "categoryId": 6,
                     "categoryName": "Keyrings",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         33,
                         34,
@@ -109,6 +115,7 @@
                     "categoryId": 7,
                     "categoryName": "Hats",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         39,
                         40,
@@ -122,6 +129,7 @@
                     "categoryId": 8,
                     "categoryName": "Socks",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         45,
                         46,
@@ -135,6 +143,7 @@
                     "categoryId": 9,
                     "categoryName": "Ties",
                     "imgSrc": "/profProductsImage.png",
+                    "priceRange": "49",
                     "productsIds": [
                         51,
                         52,
