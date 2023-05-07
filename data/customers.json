@@ -38,5 +38,13 @@
         "password": "",
         "customerId": 5,
         "basketId": 5
+    },
+    {
+        "firstName": "Christian",
+        "lastName": "test",
+        "email": "test@test.com",
+        "password": "test1234",
+        "customerId": 6,
+        "basketId": 6
     }
 ]
