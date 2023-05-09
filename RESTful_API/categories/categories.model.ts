@@ -10,7 +10,7 @@ interface OverCategoryInterface{
 
 interface SubCategoryInterface{
   categoryId: Number;
-  categoryName: String;
+  subCategoryName: String;
   productsIds: Array<Number>;
 }
 
@@ -67,10 +67,10 @@ export async function getOverCategoryByOcID(ocId: number) {
   });
 
   if (filteredCategory) {
-    let outputCategory = filteredCategory.subCategories.map((subCategory: { categoryId: Number; categoryName: String; imgSrc: String; priceRange: String; productsIds: Array<Number>; }) => {
+    let outputCategory = filteredCategory.subCategories.map((subCategory: { categoryId: Number; subCategoryName: String; imgSrc: String; priceRange: String; productsIds: Array<Number>; }) => {
       return {
         categoryId: subCategory.categoryId,
-        categoryName: subCategory.categoryName,
+        subCategoryName: subCategory.subCategoryName,
         imgSrc: subCategory.imgSrc,
         priceRange: subCategory.priceRange,
         productsIds: subCategory.productsIds
