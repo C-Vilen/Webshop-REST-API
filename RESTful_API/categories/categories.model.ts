@@ -3,7 +3,7 @@ import { ProductInterface, getProductByID } from "../products/products.model"
 const CATEGORIES_FILE = "./data/categories.json"
 
 interface OverCategoryInterface{
-  overCategory: String;
+  overCategoryName: String;
   ocId: Number;
   subCategories: Array<object>
 }
@@ -46,9 +46,9 @@ export async function getAllCategories() {
 export async function getAllOverCategories() {
   let categoryArray = await getCategoriesFile();
 
-  let outputCategoryArray:OverCategoryInterface = categoryArray.categories.map((category: { overCategory: String; ocId: Number; imgSrc: String; priceRange: String;  }) => {
+  let outputCategoryArray:OverCategoryInterface = categoryArray.categories.map((category: { overCategoryName: String; ocId: Number; imgSrc: String; priceRange: String;  }) => {
     return {
-      overCategory: category.overCategory,
+      overCategoryName: category.overCategoryName,
       ocId: category.ocId,
       imgSrc: category.imgSrc,
       priceRange: category.priceRange
@@ -78,7 +78,7 @@ export async function getOverCategoryByOcID(ocId: number) {
     });
 
     return {
-      overCategory: filteredCategory.overCategory,
+      overCategoryName: filteredCategory.overCategoryName,
       ocId: filteredCategory.ocId,
       subCategories: outputCategory
     };
