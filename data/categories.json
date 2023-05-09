@@ -7,7 +7,7 @@
             "priceRange": "49",
             "subCategories": [
                 {
-                    "categoryId": 1,
+                    "subcId": 1,
                     "subCategoryName": "Carnival",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -23,7 +23,7 @@
                     ]
                 },
                 {
-                    "categoryId": 2,
+                    "subcId": 2,
                     "subCategoryName": "Professions",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -38,7 +38,7 @@
                     ]
                 },
                 {
-                    "categoryId": 3,
+                    "subcId": 3,
                     "subCategoryName": "Alternative",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -62,7 +62,7 @@
             "priceRange": "39 - 109",
             "subCategories": [
                 {
-                    "categoryId": 4,
+                    "subcId": 4,
                     "subCategoryName": "Bags",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -76,7 +76,7 @@
                     ]
                 },
                 {
-                    "categoryId": 5,
+                    "subcId": 5,
                     "subCategoryName": "Jewlery",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -90,7 +90,7 @@
                     ]
                 },
                 {
-                    "categoryId": 6,
+                    "subcId": 6,
                     "subCategoryName": "Keyrings",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -112,7 +112,7 @@
             "priceRange": "39 - 69",
             "subCategories": [
                 {
-                    "categoryId": 7,
+                    "subcId": 7,
                     "subCategoryName": "Hats",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -126,7 +126,7 @@
                     ]
                 },
                 {
-                    "categoryId": 8,
+                    "subcId": 8,
                     "subCategoryName": "Socks",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",
@@ -140,7 +140,7 @@
                     ]
                 },
                 {
-                    "categoryId": 9,
+                    "subcId": 9,
                     "subCategoryName": "Ties",
                     "imgSrc": "/profProductsImage.png",
                     "priceRange": "49",

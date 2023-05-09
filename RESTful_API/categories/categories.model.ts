@@ -8,11 +8,6 @@ interface OverCategoryInterface{
   subCategories: Array<object>
 }
 
-interface SubCategoryInterface{
-  categoryId: Number;
-  subCategoryName: String;
-  productsIds: Array<Number>;
-}
 
 // return all data from file
 export async function getCategoriesFile() {
@@ -67,9 +62,9 @@ export async function getOverCategoryByOcID(ocId: number) {
   });
 
   if (filteredCategory) {
-    let outputCategory = filteredCategory.subCategories.map((subCategory: { categoryId: Number; subCategoryName: String; imgSrc: String; priceRange: String; productsIds: Array<Number>; }) => {
+    let outputCategory = filteredCategory.subCategories.map((subCategory: { subcId: Number; subCategoryName: String; imgSrc: String; priceRange: String; productsIds: Array<Number>; }) => {
       return {
-        categoryId: subCategory.categoryId,
+        subcId: subCategory.subcId,
         subCategoryName: subCategory.subCategoryName,
         imgSrc: subCategory.imgSrc,
         priceRange: subCategory.priceRange,
@@ -88,11 +83,11 @@ export async function getOverCategoryByOcID(ocId: number) {
 }
 
 // Returns all products associated to subcategory
-export async function getProductsBySubCategory(ocID: number, categoryId: number) {
+export async function getProductsBySubCategory(ocID: number, subcId: number) {
   let overCategory = await getOverCategoryByOcID(ocID);
   let subCategory;
   if (overCategory != null) {
-    subCategory = overCategory.subCategories.find((sub:any) => sub.categoryId === categoryId);
+    subCategory = overCategory.subCategories.find((sub:any) => sub.subcId === subcId);
   }
   if (!subCategory) {
     throw new Error('Overcategory or Subcategory does not exist');
