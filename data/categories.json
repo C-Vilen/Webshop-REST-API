@@ -3,13 +3,13 @@
         {
             "overCategoryName": "Rubber Ducks",
             "ocId": 1,
-            "imgSrc": "/profProductsImage.png",
+            "imgSrc": "/allDucksImage.webp",
             "priceRange": "49",
             "subCategories": [
                 {
                     "subcId": 1,
                     "subCategoryName": "Carnival",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/dressUpProductsImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         1,
@@ -25,7 +25,7 @@
                 {
                     "subcId": 2,
                     "subCategoryName": "Professions",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/profProductsImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         6,
@@ -40,7 +40,7 @@
                 {
                     "subcId": 3,
                     "subCategoryName": "Alternative",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/allDucksImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         14,
@@ -58,13 +58,13 @@
         {
             "overCategoryName": "Accessories",
             "ocId": 2,
-            "imgSrc": "/allProductsImage.png",
+            "imgSrc": "/AllAccessoriesImage.webp",
             "priceRange": "39 - 109",
             "subCategories": [
                 {
                     "subcId": 4,
                     "subCategoryName": "Bags",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/allBagsImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         21,
@@ -78,7 +78,7 @@
                 {
                     "subcId": 5,
                     "subCategoryName": "Jewlery",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/AllJewleryImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         27,
@@ -92,7 +92,7 @@
                 {
                     "subcId": 6,
                     "subCategoryName": "Keyrings",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/AllKeysImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         33,
@@ -108,13 +108,13 @@
         {
             "overCategoryName": "Clothes",
             "ocId": 3,
-            "imgSrc": "/dressUpProductsImage.png",
+            "imgSrc": "/AllClothesImage.webp",
             "priceRange": "39 - 69",
             "subCategories": [
                 {
                     "subcId": 7,
                     "subCategoryName": "Hats",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/AllHatsImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         39,
@@ -128,7 +128,7 @@
                 {
                     "subcId": 8,
                     "subCategoryName": "Socks",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/AllSocksImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         45,
@@ -142,7 +142,7 @@
                 {
                     "subcId": 9,
                     "subCategoryName": "Ties",
-                    "imgSrc": "/profProductsImage.png",
+                    "imgSrc": "/AllTiesImage.webp",
                     "priceRange": "49",
                     "productsIds": [
                         51,
