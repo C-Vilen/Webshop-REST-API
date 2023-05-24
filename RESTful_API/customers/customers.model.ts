@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import { createBasket, BasketInterface, getBasketFile } from "../baskets/baskets.model"
 const CUSTOMERS_FILE = "./data/customers.json"
-//import methods for baskets
 
 //Types for JSON objects
 export interface CustomerInterface {
@@ -13,7 +12,6 @@ export interface CustomerInterface {
   password: String;
 }
 
-
 // return all data from file
 export async function getCustomersFile() {
   try {
@@ -23,7 +21,7 @@ export async function getCustomersFile() {
   } catch (err: any) {
     if (err.code === "ENOENT") {
       // file does not exits
-      await saveDefaultArray([]); // create a new file with ampty array
+      await saveDefaultArray([]); // create a new file with empty array
       return []; // return empty array
     } // // cannot handle this exception, so rethrow
     else throw err;
@@ -34,7 +32,6 @@ async function saveDefaultArray(data = []) {
   let dataTxt = JSON.stringify(data);
   fs.writeFileSync(CUSTOMERS_FILE, dataTxt)
 }
-
 
 // Checks if customer with specific ID exists
 export function findCustomer(customerArray: Array<CustomerInterface>, Id: number) {
@@ -53,7 +50,6 @@ function getCustomerID(customerArray: Array<CustomerInterface>) {
   });
   return newId;
 }
-
 
 //Saves a customer to data.JSON
 async function saveCustomer(customer: CustomerInterface) {
@@ -104,7 +100,6 @@ export async function getCustomers() {
   let customerArray = await getCustomersFile();
   return customerArray;
 }
-
 
 // Checks if customer with specific ID exists
 export async function findGuest() {

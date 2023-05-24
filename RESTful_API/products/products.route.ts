@@ -1,8 +1,5 @@
-// index.js
 import express from "express";
 import { getAllProducts, getNewlyAddedProducts, getProduct} from "./products.controller.js";
-
-
 export const productsRouter = express.Router();
 
 // middleware specific to this route

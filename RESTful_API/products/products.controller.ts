@@ -1,5 +1,5 @@
 import * as dataModel from "./products.model.js";
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 
 //GET method to retrieve all products
 export async function getAllProducts(req:Request, res:Response) {

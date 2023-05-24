@@ -1,5 +1,5 @@
 import * as dataModel from "./customers.model.js";
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 
 //POST method to create a customer
 export async function postCustomer(req: Request, res: Response) {

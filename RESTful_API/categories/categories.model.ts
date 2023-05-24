@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { ProductInterface, getProductByID } from "../products/products.model"
+import { getProductByID } from "../products/products.model"
 const CATEGORIES_FILE = "./data/categories.json"
 
 interface OverCategoryInterface{
@@ -18,7 +18,7 @@ export async function getCategoriesFile() {
   } catch (err:any) {
     if (err.code === "ENOENT") {
       // file does not exits
-      await saveDefaultArray([]); // create a new file with ampty array
+      await saveDefaultArray([]); // create a new file with empty array
       return []; // return empty array
     } // // cannot handle this exception, so rethrow
     else throw err;

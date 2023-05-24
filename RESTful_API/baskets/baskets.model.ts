@@ -1,7 +1,6 @@
-import exp from "constants";
 import * as fs from "fs";
 import { getProductByID, ProductInterface } from "../products/products.model";
-import { getCustomersFile, findCustomer, getCustomerObject } from "../customers/customers.model";
+import { getCustomerObject } from "../customers/customers.model";
 import { CustomerInterface } from "../customers/customers.model";
 const BASKETS_FILE = "./data/baskets.json";
 
@@ -20,7 +19,7 @@ export async function getBasketFile() {
   } catch (err:any) {
     if (err.code === "ENOENT") {
       // file does not exits
-      await saveDefaultArray([]); // create a new file with ampty array
+      await saveDefaultArray([]); // create a new file with empty array
       return []; // return empty array
     } // // cannot handle this exception, so rethrow
     else throw err;

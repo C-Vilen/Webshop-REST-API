@@ -1,8 +1,6 @@
 import * as fs from "fs";
 const PRODUCTS_FILE = "./data/products.json"
 
-//Types for JSON objects
-
 export interface ProductInterface{
   productId: number;
   productName: String;
@@ -20,12 +18,13 @@ export async function getProductsFile() {
   } catch (err:any) {
     if (err.code === "ENOENT") {
       // file does not exits
-      await saveDefaultArray([]); // create a new file with ampty array
+      await saveDefaultArray([]); // create a new file with empty array
       return []; // return empty array
     } // // cannot handle this exception, so rethrow
     else throw err;
   }
 }
+
 // saves an empty array to data.JSON if array does not exist
 async function saveDefaultArray(data = []) {
   let dataTxt = JSON.stringify(data);

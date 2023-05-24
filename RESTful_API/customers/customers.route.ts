@@ -8,7 +8,6 @@ export const customersRouter = express.Router();
 customersRouter.use(express.json());
 
 // route handlers
-
 customersRouter.post("/customers", postCustomer);
 customersRouter.get("/customers", getCustomers);
 customersRouter.get("/customers/guest", getGuestCustomer);

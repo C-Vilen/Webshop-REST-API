@@ -1,5 +1,5 @@
 import * as dataModel from "./baskets.model.js";
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 
 // POST method to add specific product to a Customer's basket
 export async function addProductToBasket(req: Request, res: Response) {
