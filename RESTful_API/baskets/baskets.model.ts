@@ -8,7 +8,6 @@ const BASKETS_FILE = "./data/baskets.json";
 //Types for JSON objects
 export interface BasketInterface{
 basketId: number;
-totalPrice: number;
 productIds: Array<number>;
 }
 
@@ -49,7 +48,7 @@ function getBasketID(basketArray: Array<BasketInterface>) {
 async function saveBasket(newBasketId:number) {
   let existingData = fs.readFileSync(BASKETS_FILE, "utf-8");
   let existingBaskets = JSON.parse(existingData);
-  let newBasket: BasketInterface = { basketId: newBasketId, totalPrice: 0, productIds:[]}
+  let newBasket: BasketInterface = { basketId: newBasketId, productIds:[]}
   existingBaskets.push(newBasket);
   let updatedData = JSON.stringify(existingBaskets);
   fs.writeFileSync(BASKETS_FILE, updatedData);
